@@ -18,7 +18,7 @@ namespace Tanks
         private float _prevRotation;
         private float _currentSteerAngle;
         
-        [SerializeField]
+        [Inject]
         private CinemachineVirtualCamera _camera;
 
         [Header("---References---"), SerializeField]
@@ -124,7 +124,7 @@ namespace Tanks
 
         private void ApplyDrive()
         {
-            var torque = _controller.Acceleration * 100;
+            var torque = _controller.Acceleration * _transmission.GetTorque(CurrentSpeed);
             if (_controller.Acceleration < 0f)
                 torque *= _reverseMult;
 #if UNITY_EDITOR

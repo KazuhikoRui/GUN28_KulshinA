@@ -44,7 +44,7 @@ namespace Tanks
 			=> HandBrake = obj.performed;
 		private void FireChangeEventHandler(InputAction.CallbackContext obj)
 			=> CallFire();
-		
+			
 		private void OnDestroy()
 		{
 			_tank.Handbreak.performed -= HandbreakChangeEventHandler;
